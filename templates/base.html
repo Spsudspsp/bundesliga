@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bundesliga Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-body">
+        <div class="container-fluid">
+            <ul class="navbar-nav p3">
+                {% if not request.user.is_authenticated %}
+                    <li class="nav-item bg-body fs-3 mt-2 mb-2 ml-2 p-2"><a class="nav-link text-dark" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item bg-body fs-3 mt-2 mb-2 ml-2 p-2"><a class="nav-link text-dark" href="{% url 'register' %}">Register</a></li>
+                {% else %}
+                    <li class="nav-item bg-body fs-3 mt-2 mb-2 ml-2 p-2">
+                        <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit" class="btn btn-link nav-link text-dark">Logout</button></form>
+                    </li>
+                    <li class="nav-item bg-body fs-3 mt-2 mb-2 ml-2 p-2"><a class="nav-link text-dark" href="{% url 'games' %}">Upcoming Games</a></li>
+                    <li class="nav-item bg-body fs-3 mt-2 mb-2 ml-2 p-2"><a class="nav-link text-dark" href="{% url 'teams' %}">Team Details</a></li>
+                    <li class="nav-item bg-body fs-3 mt-2 mb-2 ml-2 p-2"><a class="nav-link text-dark" href="{% url 'all_games' %}">All Matches</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+<body class="bg-light text-center">
+    {% block body %}
+    {% endblock body %}
+</body>
+<div class="container-fluid mt-auto border border-top">
+  <footer class="bg-dark fixed-bottom">
+    <footer class="text-center text-muted">Bundesliga Demo</footer>
+  </footer>
+</div>
+</html>

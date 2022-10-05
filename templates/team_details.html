@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>Teams details:</h1>
+    {% for team in data %}
+        <div class="container bg-light shadow p5 mt-5 mb-5">
+            <p><img src="{{ team.TeamIconUrl }}" alt="Team Icon" width="30px" height="30px">Team: {{ team.TeamName }}</p>
+            <p>Win/Loss ratio: {{ team.win_loss_ratio }}</p>
+            <p>Total Matches: {{ team.Matches }}</p>
+            <p>Matches won: {{ team.Won }}</p>
+            <p>Matches lost: {{ team.Lost }}</p>
+            <p>Draws: {{ team.Draw }}</p>
+        </div>
+    {% endfor %}
+{% endblock body %}

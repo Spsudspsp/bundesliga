@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div>
+    <h1>All games for the season:</h1>
+    {% for match in data %}
+        <div style="" class="text-center rounded shadow p3 mt-5 mb-5">
+            <p>{{ match.LeagueName }}</p>
+            <p>Teams:
+                <img src="{{ match.Team1.TeamIconUrl }}" alt="Team Icon" width="30px" height="30px">
+                {{ match.Team1.TeamName }} -
+                <img src="{{ match.Team2.TeamIconUrl }}" alt="Team Icon" width="30px" height="30px">
+                {{ match.Team2.TeamName }}
+            </p>
+            <p>{{ match.date }}, {{ match.time }}</p>
+            <p>{{ match.TimeZoneID }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock body %}
